@@ -4,8 +4,9 @@ services:
     image: 'postgres:latest'
     environment:
       - POSTGRES_PASSWORD=postgres_password
-  redis:
-    image: 'redis:latest'
+  redis-server:
+    image: 'redis'
+    command: [ "redis-server", "--protected-mode", "no" ]
   nginx:
     depends_on:
       - api
