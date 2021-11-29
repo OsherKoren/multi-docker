@@ -1,22 +1,24 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
 before_install:
-  - docker build-t osher/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t osherkoren/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true oshre/react-test npm testg
+  - docker run -e CI=true osher/react-test npm test
 
 after_success:
   - docker build -t osher/multi-client ./client
   - docker build -t osher/multi-nginx ./nginx
   - docker build -t osher/multi-server ./server
-  - docker build -t osher/mulit-worker ./worker
-# Log in to the docker CLI
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-# Tack those images and push them to docker hub
-- docker push osherkoren/multi-client
-- docker push osherkoren/multi-nginx
-- docker push osherkoren/multi-server
-- docker push osherkoren/multi-worker
+  - docker build -t osher/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push osher/multi-client
+  - docker push osher/multi-nginx
+  - docker push osher/multi-server
+  - docker push osher/multi-worker
