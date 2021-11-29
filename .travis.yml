@@ -5,10 +5,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t osher/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t osherkoren/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true osher/react-test npm test
+  - docker run -e CI=true osherkoren/react-test npm test
 
 after_success:
   - docker build -t osherkoren/multi-client ./client
