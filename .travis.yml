@@ -11,14 +11,14 @@ script:
   - docker run -e CI=true osher/react-test npm test
 
 after_success:
-  - docker build -t osher/multi-client ./client
-  - docker build -t osher/multi-nginx ./nginx
-  - docker build -t osher/multi-server ./server
-  - docker build -t osher/multi-worker ./worker
+  - docker build -t osherkoren/multi-client ./client
+  - docker build -t osherkoren/multi-nginx ./nginx
+  - docker build -t osherkoren/multi-server ./server
+  - docker build -t osherkoren/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push osher/multi-client
-  - docker push osher/multi-nginx
-  - docker push osher/multi-server
-  - docker push osher/multi-worker
+  - docker push osherkoren/multi-client
+  - docker push osherkoren/multi-nginx
+  - docker push osherkoren/multi-server
+  - docker push osherkoren/multi-worker
