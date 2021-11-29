@@ -16,7 +16,7 @@ after_success:
 # Log in to the docker CLI
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Tack those images and push them to docker hub
-- docker push osher/multi-client
-- docker push osher/multi-nginx
-- docker push osher/multi-server
-- docker push osher/multi-worker
+- docker push osherkoren/multi-client
+- docker push osherkoren/multi-nginx
+- docker push osherkoren/multi-server
+- docker push osherkoren/multi-worker
