@@ -1,12 +1,10 @@
 version: "3"
 services:
   client:
-    name: "client"
     image: "osherkoren/multi-client"
     mem_limit: 128m
     hostname: client
   redis-server:
-    name: "redis-server"
     image: "osherkoren/multi-server"
     mem_limit: 128m
     hostname: api
@@ -19,7 +17,6 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    name: "worker"
     image: "osherkoren/multi-worker"
     mem_limit: 128m
     hostname: worker
@@ -27,7 +24,6 @@ services:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    name: "nginx"
     image: "osherkoren/multi-nginx"
     mem_limit: 128m
     hostname: nginx
