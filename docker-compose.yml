@@ -5,8 +5,8 @@ services:
     image: "osherkoren/multi-client"
     mem_limit: 128m
     hostname: client
-  server:
-    name: "server"
+  redis-server:
+    name: "redis-server"
     image: "osherkoren/multi-server"
     mem_limit: 128m
     hostname: api
